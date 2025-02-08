@@ -1,5 +1,7 @@
 //SHRDV06A  JOB ,'SHRDV06',NOTIFY=&SYSUID                         
+//****************************************************************
 //* CREATE PS AND PDS FOR FURTHER STEPS
+//**************************************************************** 
 //CREATE   EXEC PGM=IEFBR14                                           
 //SYSPRINT   DD SYSOUT=*                                              
 //SYSOUT     DD SYSOUT=* 
@@ -9,7 +11,9 @@
 //PDS        DD DSN=&SYSUID..IBMUTILM.GENPDS,                       
 //           DISP=(MOD,CATLG,DELETE),SPACE=(TRK,(2,2,2)),                       
 //           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800)
+//****************************************************************
 //* COPY PS FILE. HERE IN-STREAM DATA CAN BE REPLACED WITH PS FILE
+//**************************************************************** 
 //COPYPS   EXEC PGM=IEBGENER
 //SYSUT1 DD *
 HELLO, I AM THE MEMBER GENERATED USING IEBGENER
@@ -17,7 +21,9 @@ HELLO, I AM THE MEMBER GENERATED USING IEBGENER
 //SYSUT2 DD DSN=&SYSUID..IBMUTILM.GENPS,DISP=OLD  
 //SYSPRINT DD SYSOUT=*
 //SYSIN DD DUMMY
+//**************************************************************** 
 //* CREATE PDS MEMBER FROM INSTREAM DATA             
+//**************************************************************** 
 //CRETMEM1 EXEC PGM=IEBGENER 
 //SYSUT1 DD *
 HELLO, I AM THE MEMBER GENERATED USING IEBGENER
@@ -25,7 +31,9 @@ HELLO, I AM THE MEMBER GENERATED USING IEBGENER
 //SYSUT2 DD DSN=&SYSUID..IBMUTILM.GENPDS(MEMBER1),DISP=SHR  
 //SYSPRINT DD SYSOUT=*
 //SYSIN DD DUMMY
+//**************************************************************** 
 //* CREATE MULTIPLE PDS MEMBER FROM INSTREAM DATA 
+//**************************************************************** 
 //CRETMEM2 EXEC PGM=IEBGENER 
 //SYSUT1 DD *
 1 HELLO, I AM THE ANOTHER MEMBER GENERATED USING IEBGENER
@@ -46,7 +54,9 @@ GROUP1    RECORD  IDENT=(8,'FIRSTMEM',1)
 GROUP2    RECORD  IDENT=(8,'SECNDMEM',1)
           MEMBER  NAME=MEMBER4
 /*
+//**************************************************************** 
 //* CHANGE RECORD FORMAT
+//**************************************************************** 
 //CHGFBVB   EXEC PGM=IEBGENER
 //SYSUT1 DD DSN=&SYSUID..IBMUTILM.GENPS,DISP=SHR
 //SYSUT2 DD DSN=&SYSUID..IBMUTILM.GENPSVB,
