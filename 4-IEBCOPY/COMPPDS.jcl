@@ -1,0 +1,11 @@
+//COMPPDS  JOB ('IEBCOPY'),CLASS=A,MSGCLASS=A
+//* IEBCOPY is commonly used for this in real projects.
+//* SYSUT1 and SYSUT2 should be same             
+//STEP1    EXEC PGM=IEBCOPY
+//SYSPRINT DD  SYSOUT=A
+//SYSUT1   DD  DSN=MY.PDS,DISP=SHR
+//SYSUT2   DD  DSN=MY.PDS,DISP=SHR
+//SYSIN    DD  *
+  COPY OUTDD=SYSUT2,INDD=SYSUT1
+  SELECT MEMBER=ALL
+/*
