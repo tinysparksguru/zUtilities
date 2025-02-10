@@ -1,28 +1,32 @@
 //SHRDV06A  JOB ,'SHRDV06',NOTIFY=&SYSUID                         
 //****************************************************************
-//* CREATE PS AND PDS FOR FURTHER STEPS
+//* CLEANUP OLD DATASET AND CREATE NEW FOR FURTHER STEPS
 //**************************************************************** 
 //CREATE   EXEC PGM=IEFBR14                                           
 //SYSPRINT   DD SYSOUT=*                                              
 //SYSOUT     DD SYSOUT=* 
-//PS         DD DSN=&SYSUID..IBMUTILM.GENPS,                       
-//           DISP=(MOD,CATLG,DELETE),SPACE=(TRK,(2,2)),                       
-//           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800)
+//* PS FILE TO BE DELETED
+//PS         DD DSN=&SYSUID..IBMUTILM.GENPS,DISP=(OLD,DELETE)
+//* PDS FILE TO BE CLEANUP
 //PDS        DD DSN=&SYSUID..IBMUTILM.GENPDS,                       
 //           DISP=(MOD,CATLG,DELETE),SPACE=(TRK,(2,2,2)),                       
 //           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800)
 //****************************************************************
-//* COPY PS FILE. HERE IN-STREAM DATA CAN BE REPLACED WITH PS FILE
+//* MAKE A COPY OF PS FILE
+//* HERE IN-STREAM DATA CAN BE REPLACED WITH PS FILE
 //**************************************************************** 
 //COPYPS   EXEC PGM=IEBGENER
 //SYSUT1 DD *
-HELLO, I AM THE MEMBER GENERATED USING IEBGENER
+HELLO, I AM THE DATA.
 /*
-//SYSUT2 DD DSN=&SYSUID..IBMUTILM.GENPS,DISP=OLD  
+//SYSUT2 DD DSN=&SYSUID..IBMUTILM.GENPS,
+//          DISP=(MOD,CATLG,DELETE),SPACE=(TRK,(2,2)),
+//          DCB=(RECFM=FB,LRECL=80,BLKSIZE=800)  
 //SYSPRINT DD SYSOUT=*
 //SYSIN DD DUMMY
 //**************************************************************** 
-//* CREATE PDS MEMBER FROM INSTREAM DATA             
+//* COPY PS FILE TO PDS MEMBER    
+//* HERE IN-STREAM DATA CAN BE REPLACED WITH PS FILE    
 //**************************************************************** 
 //CRETMEM1 EXEC PGM=IEBGENER 
 //SYSUT1 DD *
@@ -32,7 +36,8 @@ HELLO, I AM THE MEMBER GENERATED USING IEBGENER
 //SYSPRINT DD SYSOUT=*
 //SYSIN DD DUMMY
 //**************************************************************** 
-//* CREATE MULTIPLE PDS MEMBER FROM INSTREAM DATA 
+//* COPY PS FILE TO MULTIPLE PDS MEMBER
+//* HERE IN-STREAM DATA CAN BE REPLACED WITH PS FILE
 //**************************************************************** 
 //CRETMEM2 EXEC PGM=IEBGENER 
 //SYSUT1 DD *
@@ -54,13 +59,3 @@ GROUP1    RECORD  IDENT=(8,'FIRSTMEM',1)
 GROUP2    RECORD  IDENT=(8,'SECNDMEM',1)
           MEMBER  NAME=MEMBER4
 /*
-//**************************************************************** 
-//* CHANGE RECORD FORMAT
-//**************************************************************** 
-//CHGFBVB   EXEC PGM=IEBGENER
-//SYSUT1 DD DSN=&SYSUID..IBMUTILM.GENPS,DISP=SHR
-//SYSUT2 DD DSN=&SYSUID..IBMUTILM.GENPSVB,
-//          DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1)),
-//          DCB=(RECFM=VB,LRECL=84,BLKSIZE=0)  
-//SYSPRINT DD SYSOUT=*
-//SYSIN DD DUMMY
