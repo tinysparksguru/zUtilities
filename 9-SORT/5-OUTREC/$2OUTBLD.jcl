@@ -1,5 +1,8 @@
-//Z55249A   JOB ,'Z55249',CLASS=A,MSGCLASS=A,                         
-//          NOTIFY=&SYSUID
+//Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID
+//*****************************************************************
+//* COPY DATA FROM SORTIN TO SORTOUT 
+//* SORT THE RECORD AND WRITE OUTREC AT SPECIFIC COLUMNS
+//***************************************************************** 
 //STEP1 EXEC PGM=SORT
 //******10********20********30********40********50********60********70
 //SORTIN   DD   *
@@ -11,7 +14,8 @@
 //SORTOUT  DD   SYSOUT=*
 //SYSPRINT DD   SYSOUT=*
 //SYSOUT   DD   SYSOUT=*
+//* FIELDS|BUILD = (C:P,M) C=>OUTPUT POS,P=>INPUT POS,M=>LENGTH
 //SYSIN    DD   *
          SORT FIELDS=(16,4,CH,D)
-         OUTREC FIELDS=(3,12,16,4)
+         OUTREC BUILD=(1:9,6,10:16,4)
 /*

@@ -1,5 +1,8 @@
-//Z55249A   JOB ,'Z55249',CLASS=A,MSGCLASS=A,                         
-//          NOTIFY=&SYSUID
+//Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID
+//*****************************************************************
+//* COPY DATA FROM SORTIN TO SORTOUT 
+//* COPY A DATASET USING SORT OUTREC WITH FINDREP
+//***************************************************************** 
 //STEP1 EXEC PGM=SORT
 //SORTIN   DD   *
   HELLO RECORD 1 NOT MATCH

@@ -1,5 +1,12 @@
-//Z55249A   JOB ,'Z55249',CLASS=A,MSGCLASS=A,                         
-//          NOTIFY=&SYSUID
+//Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID 
+//*****************************************************************
+//* COPY DATA FROM SORTIN TO SORTOUT 
+//* SORT THE RECORD WITH OMIT CONDITION
+//*       16th Char, Length 4 and Descending order
+//* COPY ONLY RECORD Which "Do Not match" Below Condition
+//*       Have "NOT" at 21st Position And
+//*       Have "0001" at 16th Position
+//*****************************************************************
 //STEP1 EXEC PGM=SORT
 //******10********20********30********40********50********60********70
 //SORTIN   DD   *

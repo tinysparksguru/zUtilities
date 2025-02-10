@@ -1,5 +1,8 @@
-//Z55249A   JOB ,'Z55249',CLASS=A,MSGCLASS=A,                         
-//          NOTIFY=&SYSUID
+//Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID
+//*****************************************************************
+//* COPY DATA FROM SORTIN TO SORTOUT 
+//* SPLIT A DATASET INTO EQUAL PARTS
+//*****************************************************************
 //STEP1 EXEC PGM=SORT
 //******10********20********30********40********50********60********70
 //SORTIN   DD   *
