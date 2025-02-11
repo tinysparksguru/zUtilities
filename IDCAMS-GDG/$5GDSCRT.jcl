@@ -3,10 +3,7 @@
 //*  RERUN $1GDGCRT BEFORE RUNNING THIS
 //*  ALLOCATE GENERATION DATASET GROUP GENERATION                               
 //* ******************************************************************
-//ALLOCAT1 EXEC PGM=IEFBR14                                           
-//SYSPRINT   DD SYSOUT=*                                              
-//SYSOUT     DD SYSOUT=*                                                        
-//*
+//ALLOCAT1 EXEC PGM=IEFBR14                                                                                               
 //DD1        DD DSN=&SYSUID..IBMUTILM.GDG1(+1),SPACE=(TRK,(1,1)),        
 //           DISP=(NEW,CATLG,DELETE),                                 
 //           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800)  

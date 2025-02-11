@@ -2,9 +2,7 @@
 //****************************************************************
 //** CREATE NEW PS AND PDS          
 //****************************************************************
-//CREATE   EXEC PGM=IEFBR14                                           
-//SYSPRINT   DD SYSOUT=*                                              
-//SYSOUT     DD SYSOUT=*                                                        
+//CREATE   EXEC PGM=IEFBR14                                                                                                  
 //PS         DD DSN=&SYSUID..IBMUTILM.TESTPS1,                       
 //           DISP=(NEW,CATLG,DELETE),                                 
 //           SPACE=(TRK,(1,1)),                                                 
@@ -16,9 +14,7 @@
 //****************************************************************
 //** CREATE AND DELETE NEW PS AND PDS   
 //****************************************************************
-//DELETENW   EXEC PGM=IEFBR14                                           
-//SYSPRINT   DD SYSOUT=*                                              
-//SYSOUT     DD SYSOUT=*                 
+//DELETENW   EXEC PGM=IEFBR14                                                            
 //PS         DD DSN=&SYSUID..IBMUTILM.TESTPS2,                       
 //           DISP=(NEW,DELETE,DELETE),                                 
 //           SPACE=(TRK,(1,1)),                                                 
@@ -30,9 +26,7 @@
 //****************************************************************
 //** DELETE EXISTING PS AND PDS 
 //****************************************************************
-//DELETEEX   EXEC PGM=IEFBR14                                           
-//SYSPRINT   DD SYSOUT=*                                              
-//SYSOUT     DD SYSOUT=*                 
+//DELETEEX   EXEC PGM=IEFBR14                                                    
 //PS         DD DSN=&SYSUID..IBMUTILM.TESTPS1,                       
 //           DISP=(OLD,DELETE,DELETE)  
 //PDS        DD DSN=&SYSUID..IBMUTILM.TESTPDS1,                       
@@ -41,9 +35,7 @@
 //** CREATE IF NOT EXIST AND THEN DELETE PS AND PDS
 //** IF EXISTS JUST DELETE PS AND PDS
 //****************************************************************
-//DELETEE1   EXEC PGM=IEFBR14                                           
-//SYSPRINT   DD SYSOUT=*                                              
-//SYSOUT     DD SYSOUT=*                 
+//DELETEE1   EXEC PGM=IEFBR14                                                           
 //PS         DD DSN=&SYSUID..IBMUTILM.TESTPS1,                       
 //           DISP=(MOD,DELETE,DELETE),SPACE=(TRK,(1,1))  
 //PDS        DD DSN=&SYSUID..IBMUTILM.TESTPDS1,                       

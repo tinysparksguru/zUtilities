@@ -4,10 +4,7 @@
 //* 1 MORE THAN THE SET LIMIT                     
 //* ******************************************************************
 //ALLOCGEN   PROC GDGNM=GDG1
-//ALLOCATE EXEC PGM=IEFBR14                                           
-//SYSPRINT   DD SYSOUT=*                                              
-//SYSOUT     DD SYSOUT=*                                              
-//SYSDUMP    DD SYSOUT=*                                              
+//ALLOCATE EXEC PGM=IEFBR14                                                                                       
 //DD1        DD DSN=&SYSUID..IBMUTILM.&GDGNM(+1),SPACE=(TRK,(1,1)),        
 //           DISP=(NEW,CATLG,DELETE),                                 
 //           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800)  

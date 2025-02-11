@@ -2,9 +2,7 @@
 //* ******************************************************************
 //*  DELETE SINGLE GENERATION DATASET GROUP GENERATION                          
 //* ******************************************************************
-//DELETE1 EXEC PGM=IEFBR14                                           
-//SYSPRINT   DD SYSOUT=*                                              
-//SYSOUT     DD SYSOUT=*                                                        
+//DELETE1 EXEC PGM=IEFBR14                                                                                                  
 //DD1        DD DSN=&SYSUID..IBMUTILM.GDG1(0),
 //           DISP=(OLD,DELETE,DELETE)
 //DD2        DD DSN=&SYSUID..IBMUTILM.GDG2.G0001V00,

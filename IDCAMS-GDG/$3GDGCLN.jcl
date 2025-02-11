@@ -6,9 +6,7 @@
 //* STAY
 //* ******************************************************************
 //DELETEG    PROC GDGNM=GDG1
-//DELETE2 EXEC PGM=IEFBR14                                           
-//SYSPRINT   DD SYSOUT=*                                              
-//SYSOUT     DD SYSOUT=*                                                        
+//DELETE2 EXEC PGM=IEFBR14                                                                                                 
 //DD1        DD DSN=&SYSUID..IBMUTILM.&GDGNM,
 //           DISP=(OLD,DELETE,DELETE) 
 //           PEND

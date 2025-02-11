@@ -3,8 +3,6 @@
 //* CLEANUP OLD DATASET AND CREATE NEW FOR FURTHER STEPS
 //**************************************************************** 
 //CREATE   EXEC PGM=IEFBR14                                           
-//SYSPRINT   DD SYSOUT=*                                              
-//SYSOUT     DD SYSOUT=* 
 //* PS FILE TO BE DELETED
 //PS         DD DSN=&SYSUID..IBMUTILM.GENPS,DISP=(OLD,DELETE)
 //* PDS FILE TO BE CLEANUP

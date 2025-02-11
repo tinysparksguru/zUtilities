@@ -2,9 +2,7 @@
 //*******************************************************************
 //* DELETE AND CREATE NEW PS FILE AND PUT SOME DATA
 //*******************************************************************
-//DELETE1 EXEC PGM=IEFBR14                                           
-//SYSPRINT   DD SYSOUT=*                                              
-//SYSOUT     DD SYSOUT=*                                                        
+//DELETE1 EXEC PGM=IEFBR14                                                                                                  
 //DD1        DD DSN=&SYSUID..IBMUTILM.VSAMPS,
 //           DISP=(MOD,DELETE,DELETE),SPACE=(TRK,(1,1)) 
 //COPYPS   EXEC PGM=IEBGENER

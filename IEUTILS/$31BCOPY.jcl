@@ -6,9 +6,7 @@
 //* MEMBER1 NAME IS SAME IN BOTH PDS JUST CONTENT IS DIFFERENT 
 //*******************************************************************
 //DELETED    PROC DSNNM=SRCCPY1
-//DELETE2 EXEC PGM=IEFBR14                                           
-//SYSPRINT   DD SYSOUT=*                                              
-//SYSOUT     DD SYSOUT=*                                                        
+//DELETE  EXEC PGM=IEFBR14                                                                                               
 //DD1        DD DSN=&SYSUID..IBMUTILM.&DSNNM,
 //           DISP=(MOD,DELETE,DELETE),SPACE=(TRK,(1,1)) 
 //           PEND
