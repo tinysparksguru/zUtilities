@@ -1,6 +1,12 @@
 //Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID                         
 //****************************************************************
-//* CREATE 3 NEW PDS AND 2 NEW MEMBERS IN EACH
+//* CREATE 5 NEW PDS WITH DIFFERENT SCENARIO FOR TESTING
+//* PDS1 - 2 MEMBER (MEMBER1 AND MEMBER2)
+//* PDS2 - 2 MEMBER SAME AS PDS1
+//* PDS3 - 1 MEMBER (SAME AS PDS1 - MEMBER1)
+//* PDS4 - 2 MEMBER (MEMBER1 different from PDS1 AND
+//*                  MEMBER2 Same as PDS1)
+//* PDS5 - 2 MEMBER (MEMBER3 AND MEMBER4) 
 //****************************************************************          
 //STEP1    EXEC PGM=IEBUPDTE,PARM=NEW
 //SYSPRINT DD  SYSOUT=*
