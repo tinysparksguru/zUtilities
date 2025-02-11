@@ -1,6 +1,7 @@
 //Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID 
 //*****************************************************************
 //* COPY DATA FROM SORTIN TO SORTOUT 
+//* NOTE: SORT FIELDS=COPY IS JUST SIMPLE COPY, NO SORTING
 //*****************************************************************
 //STEP1 EXEC PGM=SORT
 //******10********20********30********40********50********60********70

@@ -1,6 +1,7 @@
 //Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID 
 //*****************************************************************
-//* COPY A DATASET USING SORT
+//* COPY A DATASET USING SORT.
+//* NOTE: OPTION COPY IS JUST SIMPLE COPY, NO SORTING
 //*****************************************************************
 //STEP1 EXEC PGM=SORT
 //SORTIN   DD   *
@@ -11,5 +12,5 @@ HELLO I AM SECOND RECORD
 //SYSPRINT DD   SYSOUT=*
 //SYSOUT   DD   SYSOUT=*
 //SYSIN    DD   *
-         OPTION COPY
+    OPTION COPY
 /*
