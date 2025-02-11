@@ -1,0 +1,22 @@
+//Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID 
+//*****************************************************************
+//* COPY DATA FROM SORTIN TO SORTOUT 
+//*****************************************************************
+//STEP1 EXEC PGM=SORT
+//******10********20********30********40********50********60********70
+//SORTIN   DD   *
+  HELLO RECORD 0001 NOT MATCH   ABCD
+  HELLO RECORD 0004 NOT MATCH   AACD
+  HELLO RECORD 0002 TOTAL MATCH ABCD
+  HELLO RECORD 0003 NON MATCH   BDDE
+  HELLO RECORD 0005 NON MATCH   AACD
+  HELLO RECORD 0006 TOTAL MATCH   BDDE
+  HELLO RECORD 0007 NON MATCH   AACD  
+/*
+//SORTOUT  DD   SYSOUT=*
+//SYSPRINT DD   SYSOUT=*
+//SYSOUT   DD   SYSOUT=*
+//* FIELDS = (START POS, LENGTH, FORMAT, ORDER)
+//SYSIN    DD   *
+    SORT FIELDS=COPY,SKIPREC=1,STOPAFT=2
+/*

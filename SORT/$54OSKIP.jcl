@@ -1,10 +1,7 @@
-//Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID 
+//Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID
 //*****************************************************************
 //* COPY DATA FROM SORTIN TO SORTOUT 
-//* SORT THE RECORD WITH INCLUDE CONDITION
-//*       16th Char, Length 4 and Ascending order
-//* COPY ONLY RECORD Which
-//*       Do not have "NOT" at 21st Position 
+//* COPY NUMBER OF RECORDS BASED ON STARTREC AND ENDREC
 //*****************************************************************
 //STEP1 EXEC PGM=SORT
 //******10********20********30********40********50********60********70
@@ -13,11 +10,17 @@
   HELLO RECORD 0002 NOT MATCH   AACD
   HELLO RECORD 0003 TOTAL MATCH ABCD
   HELLO RECORD 0004 NON MATCH   BDDE
+  HELLO RECORD 0005 NON MATCH   AACD
+  HELLO RECORD 0006 NON MATCH   BDDE
 /*
-//SORTOUT  DD   SYSOUT=*
+//SORTOF01  DD   SYSOUT=*
+//SORTOF02  DD   SYSOUT=*
+//SORTOF03  DD   SYSOUT=*
 //SYSPRINT DD   SYSOUT=*
 //SYSOUT   DD   SYSOUT=*
 //SYSIN    DD   *
-         SORT FIELDS=(16,4,CH,A)
-         INCLUDE COND=(21,3,CH,NE,C'NOT')
+  OPTION COPY
+  OUTFIL FILES=01,ENDREC=3
+  OUTFIL FILES=02,STARTREC=2,ENDREC=5
+  OUTFIL FILES=03,STARTREC=3
 /*

@@ -1,8 +1,11 @@
-//Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID
+//Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID 
 //*****************************************************************
 //* COPY DATA FROM SORTIN TO SORTOUT 
-//* SORT THE RECORD AND WRITE OUTREC AT SPECIFIC COLUMNS
-//***************************************************************** 
+//* SORT THE RECORD WITH INCLUDE CONDITION
+//*       16th Char, Length 4 and Ascending order
+//* COPY ONLY RECORD Which
+//*       Do not have "NOT" at 21st Position 
+//*****************************************************************
 //STEP1 EXEC PGM=SORT
 //******10********20********30********40********50********60********70
 //SORTIN   DD   *
@@ -14,8 +17,7 @@
 //SORTOUT  DD   SYSOUT=*
 //SYSPRINT DD   SYSOUT=*
 //SYSOUT   DD   SYSOUT=*
-//* FIELDS|BUILD = (C:P,M) C=>OUTPUT POS,P=>INPUT POS,M=>LENGTH
 //SYSIN    DD   *
-         SORT FIELDS=(16,4,CH,D)
-         OUTREC BUILD=(1:9,6,10:16,4)
+    SORT FIELDS=COPY
+    INCLUDE COND=(21,3,CH,NE,C'NOT')
 /*

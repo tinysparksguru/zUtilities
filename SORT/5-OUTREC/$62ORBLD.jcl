@@ -1,8 +1,8 @@
 //Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID
 //*****************************************************************
 //* COPY DATA FROM SORTIN TO SORTOUT 
-//* SPLIT FILE RECORD BASED ON CONDITION
-//*****************************************************************
+//* SORT THE RECORD AND WRITE OUTREC AT SPECIFIC COLUMNS
+//***************************************************************** 
 //STEP1 EXEC PGM=SORT
 //******10********20********30********40********50********60********70
 //SORTIN   DD   *
@@ -11,12 +11,11 @@
   HELLO RECORD 0003 TOTAL MATCH ABCD
   HELLO RECORD 0004 NON MATCH   BDDE
 /*
-//SORTOF01  DD   SYSOUT=*
-//SORTOF02  DD   SYSOUT=*
+//SORTOUT  DD   SYSOUT=*
 //SYSPRINT DD   SYSOUT=*
 //SYSOUT   DD   SYSOUT=*
+//* FIELDS|BUILD = (C:P,M) C=>OUTPUT POS,P=>INPUT POS,M=>LENGTH
 //SYSIN    DD   *
-         OPTION COPY
-         OUTFIL FILES=01,INCLUDE=(21,3,CH,EQ,C'NOT')
-         OUTFIL FILES=02,INCLUDE=(21,5,CH,EQ,C'TOTAL')
+  SORT FIELDS=COPY
+  OUTREC BUILD=(1:9,6,10:16,4)
 /*
