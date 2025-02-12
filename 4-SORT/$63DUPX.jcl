@@ -1,0 +1,24 @@
+//SHRDV06A   JOB ,'SHRDV06',CLASS=A,NOTIFY=&SYSUID
+//*****************************************************************
+//* NOT SUPPORTED
+//* COPY DATA FROM SORTIN TO SORTOUT 
+//* REMOVE DUPLICATE RECORD FROM DATASET AND COPY TO XSUM
+//*****************************************************************
+//STEP1 EXEC PGM=SORT
+//******10********20********30********40********50********60********70
+//SORTIN   DD   *
+  HELLO RECORD 0001 NOT MATCH
+  HELLO RECORD 0002 NOT MATCH
+  HELLO RECORD 0003 TOTAL MATCH
+  HELLO RECORD 0004 NON MATCH
+  HELLO RECORD 0002 NOT MATCH
+  HELLO RECORD 0004 NON MATCH
+/*
+//SORTOUT  DD   SYSOUT=*
+//SORTXSUM DD   SYSOUT=*
+//SYSPRINT DD   SYSOUT=*
+//SYSOUT   DD   SYSOUT=*
+//SYSIN    DD   *
+  SORT FIELDS=(1,40,CH,A)
+  SUM FIELDS=NONE,XSUM
+/*

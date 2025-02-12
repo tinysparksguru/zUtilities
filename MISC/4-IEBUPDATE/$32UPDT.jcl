@@ -1,4 +1,4 @@
-//Z55249A   JOB ,'Z55249',CLASS=A,NOTIFY=&SYSUID  
+//SHRDV06A   JOB ,'SHRDV06',CLASS=A,NOTIFY=&SYSUID  
 //****************************************************************
 //* CREATE NEW PDS AND 1 NEW MEMBERS
 //* COPY IT TO THE NEW PDS AND ALSO ADD ONE NEW MEMBER

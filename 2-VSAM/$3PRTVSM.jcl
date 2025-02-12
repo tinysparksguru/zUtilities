@@ -1,0 +1,89 @@
+//SHRDV06A   JOB ,'SHRDV06',CLASS=A,NOTIFY=&SYSUID 
+//*******************************************************************
+//* PRINT VALID OPTIONS
+//*   OUTFILE -> DD NAME WHERE TO PRINT THE OUTPUT CONTENT.
+//*              DEFAULT IS SYSOUT=*
+//*   CHAR | DUMP | HEX
+//*   FROMKEY() | FROMADDRESS() | FROMNUMBER() | SKIP()
+//*   TOKEY()   | TOADDRESS()   | TONUMBER()   | COUNT()
+//*       SKIP/COUNT            -> ALL TYPE
+//*       FROMKEY/TOKEY         -> ONLY KSDS
+//*       FROMNUMBER/TONUMBER   -> ONLY RRDS
+//*       FROMADDRESS/TOADDRESS -> ONLY ESDS/KSDS
+//*******************************************************************
+//* PRINT VSAM DATA 
+//* - CHAR/HEX/DUMP
+//* - SKIP
+//* - COUNT
+//*******************************************************************
+//PRTVSAM  PROC VSMNM=VSAMESDS
+//PRINTNM  EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*  
+//DD1     DD DSN=&SYSUID..IBMUTILM.&VSMNM,DISP=SHR 
+//SYSIN    DD * 
+     PRINT INFILE(DD1) 
+/*
+//PRINTCH  EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*  
+//DD1     DD DSN=&SYSUID..IBMUTILM.&VSMNM,DISP=SHR 
+//SYSIN    DD * 
+     PRINT INFILE(DD1) CHAR 
+/*
+//PRINTDM  EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*  
+//DD1     DD DSN=&SYSUID..IBMUTILM.&VSMNM,DISP=SHR 
+//SYSIN    DD * 
+     PRINT INFILE(DD1) HEX
+/*
+//PRINTHX  EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*  
+//DD1     DD DSN=&SYSUID..IBMUTILM.&VSMNM,DISP=SHR 
+//SYSIN    DD * 
+     PRINT INFILE(DD1) DUMP
+/*
+//PRNTSKIP  EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*  
+//DD1     DD DSN=&SYSUID..IBMUTILM.&VSMNM,DISP=SHR 
+//SYSIN    DD * 
+     PRINT INFILE(DD1) SKIP(2)
+/*
+//PRNTCNT  EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*  
+//DD1     DD DSN=&SYSUID..IBMUTILM.&VSMNM,DISP=SHR 
+//SYSIN    DD * 
+     PRINT INFILE(DD1) COUNT(2)
+/*
+//        PEND          
+//PRINTES EXEC PROC=PRTVSAM,VSMNM=VSAMESDS
+//PRINTKS EXEC PROC=PRTVSAM,VSMNM=VSAMKSDS
+//PRINTRS EXEC PROC=PRTVSAM,VSMNM=VSAMRRDS
+//****************************************************************
+//*  FROMNUMBER/TONUMBER : ONLY RRDS
+//****************************************************************
+//PRFILTR1  EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*  
+//DD1     DD DSN=&SYSUID..IBMUTILM.VSAMRRDS,DISP=SHR 
+//SYSIN    DD * 
+     PRINT INFILE(DD1) FROMNUMBER(2)
+/*
+//PRFILTR2  EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*  
+//DD1     DD DSN=&SYSUID..IBMUTILM.VSAMRRDS,DISP=SHR 
+//SYSIN    DD * 
+     PRINT INFILE(DD1) TONUMBER(3)
+/*
+//****************************************************************
+//*  FROMKEY/TOKEY : ONLY KSDS
+//****************************************************************
+//PRFILTK1  EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*  
+//DD1     DD DSN=&SYSUID..IBMUTILM.VSAMKSDS,DISP=SHR 
+//SYSIN    DD * 
+     PRINT INFILE(DD1) FROMKEY('MYKEY2')
+/*
+//PRFILTK2  EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*  
+//DD1     DD DSN=&SYSUID..IBMUTILM.VSAMKSDS,DISP=SHR 
+//SYSIN    DD * 
+     PRINT INFILE(DD1) TOKEY('MYKEY4')
+/*
